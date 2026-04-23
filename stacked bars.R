@@ -226,7 +226,7 @@ for(v in vars_sub){
   print(plot_bar_sub(v))
 }
 
-########### BARPLOT CON NT E RIGA ORIZZONTALE #####################
+########### BARPLOT CON NT E RIGA ORIZZONTALE ###########################
 
 medie_sin_NT <- Df_sin_NT %>% 
   group_by(Trial, Micro, Group, Combination) %>% 
@@ -319,15 +319,28 @@ for(v in vars){
 }
 
 
+Df_34 <- Df %>% 
+  filter(Trial %in% c("3", "4"))
 
 
+medie_sin <- Df_34 %>% 
+  group_by(Micro) %>% 
+  summarise(
+    across(
+      where(is.numeric),
+      list(
+        mean = ~mean(.x, na.rm = TRUE)
+      ),
+      .names = "{.col}_{.fn}"
+    ),
+    .groups = "drop"
+  )
+
+#write_xlsx(medie_sin, "Df_medie_chem.xlsx")
 
 
+Df_fit <- read_excel("Df_medie_chem.xlsx", sheet = 3) 
 
-
-
-
-
-
-
+lmod_fit <- lm(Mck_day_10 ~ 	Acetic, data = Df_fit)
+summary(lmod_fit)
 
