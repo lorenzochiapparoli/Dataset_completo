@@ -24,5 +24,5 @@ Df_fit$FIT <- fitted(lmod_fit)
 
 plot(Df_fit$FIT, Df_fit$SR_severity)
 
-lm_sign <- lm(SR_severity ~ 	Gluconic+	Acetico+ Sugar+	EtOH+	G2	+A2	+S2	+E2+Cz+ + Acidità_titolabile+	AC2, data = Df_fit)
+lm_sign <- aov(SR_severity ~ 	Acetico+ Sugar+	EtOH+A2	+S2	+E2+Cz, data = Df_fit)
 summary(lm_sign)
