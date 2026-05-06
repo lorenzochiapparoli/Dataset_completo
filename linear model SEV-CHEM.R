@@ -24,7 +24,7 @@ anova(mod_step)
 anova(lmod_fit)
 #write_xlsx(anova(mod_step), "anova_step.xlsx")
 
-fitted(mod_step)
+fitted(mod_step) #####
 
 Df_fit$FIT <- fitted(mod_step)
 
